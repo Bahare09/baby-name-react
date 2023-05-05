@@ -1,11 +1,12 @@
 import React from "react";
-import NameList from "./components/NameList";
+//import NameList from "./components/NameList";
 import babyNamesData from "./babyNamesData.json";
+import Favorite from "./components/Favorite";
 
 const App = () => {
   return (
     <div>
-      <NameList babyData={babyNamesData} />
+      <Favorite babyData={babyNamesData} />
     </div>
   );
 };

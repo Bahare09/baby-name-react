@@ -3,6 +3,8 @@ import "./NameList.css";
 
 const NameList = (props) => {
   const [searchText, setSearchText] = useState("");
+  const [nameList, SetNameList] = useState(props.babyData);
+  const [favList, SetFavList] = useState("");
   const sortedData = props.babyData.sort((a, b) => {
     if (a.name < b.name) {
       return -1;
@@ -18,6 +20,12 @@ const NameList = (props) => {
   const filteredData = sortedData.filter((data) =>
     data.name.toLowerCase().includes(searchText.toLowerCase())
   );
+  const moveToFavList = (name) => {
+    SetFavList(name);
+    const filteredData = sortedData.filter((data) => data.name !== name);
+
+    SetNameList(filteredData);
+  };
 
   return (
     <div className="container">
@@ -31,12 +39,13 @@ const NameList = (props) => {
 
       <div className="NameList">
         {filteredData.map((data) => (
-          <p
+          <li
             key={data.id}
+            onClick={() => moveToFavList(data.name)}
             style={{ backgroundColor: data.sex === "f" ? "pink" : "blue" }}
           >
             {data.name}
-          </p>
+          </li>
         ))}
       </div>
     </div>

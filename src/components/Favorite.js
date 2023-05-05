@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Search from "./Search";
 const Favorite = (props) => {
   const sortedData = props.babyData.sort((a, b) => {
     if (a.name < b.name) {
@@ -24,9 +25,17 @@ const Favorite = (props) => {
     const filteredData = nameList.filter((data) => data.name !== name.name);
     SetFavList(filteredData);
   };
+  const search = (input) => {
+    SetNameList(
+      nameList.filter((data) =>
+        data.name.toLowerCase().includes(input.toLowerCase())
+      )
+    );
+  };
 
   return (
     <div>
+      <Search search={search} />
       <div className="fav-name">
         <p>Favorites:</p>
         {favList &&

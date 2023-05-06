@@ -20,9 +20,9 @@
 input {
   width: 251px;
   height: 50px;
-  border: 2px solid blue;
   border-radius: 10px;
   margin: 30px;
+  background-color: pink;
 }
 
 .input-Search {
@@ -75,7 +75,6 @@ li {
   border-radius: 10px;
   font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 }
 
 .search-button button:hover {

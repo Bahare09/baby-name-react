@@ -21,7 +21,17 @@ const Favorite = (props) => {
     SetNameList(filteredData);
   };
   const unMoveToFavList = (name) => {
-    SetNameList([...nameList, name]);
+    SetNameList(
+      [...nameList, name].sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      })
+    );
 
     const filteredData = favList.filter((data) => data.name !== name.name);
     SetFavList(filteredData);
@@ -53,9 +63,9 @@ const Favorite = (props) => {
       <div>
         <div className="search-button">
           <Search search={search} />
-          <button onClick={boyHandler}>boy</button>
-          <button onClick={girlHandler}>girl</button>
-          <button onClick={mixHandler}>mix</button>
+          <button onClick={boyHandler}>Boy</button>
+          <button onClick={girlHandler}>Girl</button>
+          <button onClick={mixHandler}>Mix</button>
         </div>
         <div className="fav-name">
           <p>Favorites:</p>

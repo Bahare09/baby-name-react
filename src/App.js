@@ -1,6 +1,6 @@
 import React from "react";
+import Favorite from "./Favorite";
 import babyNamesData from "./babyNamesData.json";
-import Favorite from "./components/Favorite";
 
 const App = () => {
   return (

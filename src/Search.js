@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./NameList.css";
 
 const Search = ({ search }) => {
   const [searchText, setSearchText] = useState("");
@@ -11,9 +10,10 @@ const Search = ({ search }) => {
   };
 
   return (
-    <div className="container">
-      <div className="input-Search">
+    <div className="container-1">
+      <div>
         <input
+          className="input-Search"
           onChange={handleSearch}
           value={searchText}
           placeholder="Search a Name.."

@@ -58,11 +58,17 @@ const Favorite = (props) => {
   const mixHandler = () => {
     SetNameList(searchList);
   };
+  const reloadHandler = () => {
+    SetNameList(sortedData);
+  };
 
   return (
     <div className="container">
       <div>
         <div className="search-button">
+          <div className="reload">
+            <button onClick={reloadHandler}>Reload</button>
+          </div>
           <Search search={search} />
           <button onClick={boyHandler}>Boy</button>
           <button onClick={girlHandler}>Girl</button>

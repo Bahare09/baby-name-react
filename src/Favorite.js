@@ -13,6 +13,7 @@ const Favorite = (props) => {
   });
   const [nameList, SetNameList] = useState(sortedData);
   const [favList, SetFavList] = useState("");
+  const [searchList, SetSearchList] = useState(sortedData);
 
   const moveToFavList = (name) => {
     SetFavList([...favList, name]);
@@ -37,25 +38,25 @@ const Favorite = (props) => {
     SetFavList(filteredData);
   };
   const search = (input) => {
-    SetNameList(
-      nameList.filter((data) =>
-        data.name.toLowerCase().includes(input.toLowerCase())
-      )
+    const filteredList = nameList.filter((data) =>
+      data.name.toLowerCase().includes(input.toLowerCase())
     );
+    SetNameList(filteredList);
+    SetSearchList(filteredList);
   };
 
   const boyHandler = () => {
-    const boyList = sortedData.filter((data) => data.sex === "m");
+    const boyList = searchList.filter((data) => data.sex === "m");
     SetNameList(boyList);
   };
 
   const girlHandler = () => {
-    const girlList = sortedData.filter((data) => data.sex === "f");
+    const girlList = searchList.filter((data) => data.sex === "f");
     SetNameList(girlList);
   };
 
   const mixHandler = () => {
-    SetNameList(sortedData);
+    SetNameList(searchList);
   };
 
   return (

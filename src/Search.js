@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Search = ({ search }) => {
-  const [searchText, setSearchText] = useState("");
-
+const Search = ({ search, searchTerm }) => {
   const handleSearch = (event) => {
     const inputText = event.target.value;
-    setSearchText(inputText);
+
     search(inputText);
   };
 
@@ -15,7 +13,7 @@ const Search = ({ search }) => {
         <input
           className="input-Search"
           onChange={handleSearch}
-          value={searchText}
+          value={searchTerm}
           placeholder="Search a Name.."
         />
       </div>

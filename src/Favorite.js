@@ -14,6 +14,7 @@ const Favorite = (props) => {
   const [nameList, SetNameList] = useState(sortedData);
   const [favList, SetFavList] = useState("");
   const [searchList, SetSearchList] = useState(sortedData);
+  const [searchTerm, SetSearchTerm] = useState("");
 
   const moveToFavList = (name) => {
     SetFavList([...favList, name]);
@@ -43,6 +44,7 @@ const Favorite = (props) => {
     );
     SetNameList(filteredList);
     SetSearchList(filteredList);
+    SetSearchTerm(input);
   };
 
   const boyHandler = () => {
@@ -60,6 +62,7 @@ const Favorite = (props) => {
   };
   const reloadHandler = () => {
     SetNameList(sortedData);
+    SetSearchTerm("");
   };
 
   return (
@@ -69,7 +72,7 @@ const Favorite = (props) => {
           <div className="reload">
             <button onClick={reloadHandler}>Reload</button>
           </div>
-          <Search search={search} />
+          <Search search={search} searchTerm={searchTerm} />
           <button onClick={boyHandler}>Boy</button>
           <button onClick={girlHandler}>Girl</button>
           <button onClick={mixHandler}>Mix</button>
